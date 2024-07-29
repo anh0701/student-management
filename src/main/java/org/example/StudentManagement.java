@@ -7,28 +7,17 @@ import java.util.Scanner;
 public class StudentManagement {
     private List<Student> students = new ArrayList<>();
 
-
-    public void add(Student student){
+    public boolean add(Student student){
         if(findById(student.getId()) == null){
             students.add(student);
+            return true;
         } else {
-            System.out.println("duplicate ID");
-        }
-
-    }
-
-    public void getAll() {
-        for (Student s : students){
-            System.out.println(s.toString());
+            return false;
         }
     }
 
-    public void getStudent(int id) {
-        if (findById(id) == null) {
-            System.out.println("Not found");
-        } else {
-            System.out.println(findById(id).toString());
-        }
+    public List<Student> getStudents() {
+        return students;
     }
 
     public Student findById(int id) {
@@ -40,12 +29,7 @@ public class StudentManagement {
         return null;
     }
 
-    public void deleteById(int id) {
-        if (findById(id) == null) {
-            System.out.println("Not found");
-        }else{
-            students.remove(findById(id));
-            System.out.println("remove success");
-        }
+    public boolean deleteById(int id){
+        return students.remove(findById(id));
     }
 }
