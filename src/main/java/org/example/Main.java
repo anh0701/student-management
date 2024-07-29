@@ -11,41 +11,36 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Student s = new Student();
-        StudentList students = new StudentList();
+        StudentManagement students = new StudentManagement();
+        StudentSystem studentSystem = new StudentSystem();
         int choice = 0;
         do {
-            menu();
+            studentSystem.menu();
             choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
                 case 1:
-                    s.input();
-                    System.out.println(s.toString());
+                    try{
+                        Student student = studentSystem.insert();
+                        students.add(student);
+                    }catch (Exception ignored){
+                        System.out.println("Error input");
+                    }
                     break;
                 case 2:
-                    System.out.println("number of students: ");
-                    int n = sc.nextInt();
-                    sc.nextLine();
-                    for (int i = 0; i < n; i++) {
-                        Student student = new Student();
-                        student.input();
-                        students.add(student);
-                    }
-                    students.getList();
+                    System.out.println("ID: ");
+                    int delStudentId = sc.nextInt();
+                    students.deleteById(delStudentId);
                     break;
                 case 3:
                     System.out.println("ID: ");
-                    int id = sc.nextInt();
-                    students.delete(id);
+                    int findStudentId = sc.nextInt();
+                    students.getStudent(findStudentId);
                     break;
                 case 4:
-                    System.out.println(s.toString());
+                    students.getAll();
                     break;
                 case 5:
-                    students.getList();
-                    break;
-                case 6:
                     System.exit(0);
                 default:
                     System.out.println("Error");
@@ -55,14 +50,4 @@ public class Main {
         }while (choice != 6);
     }
 
-    public static void menu(){
-        System.out.println("Menu");
-        System.out.println("1. add student");
-        System.out.println("2. add list students");
-        System.out.println("3. delete student");
-        System.out.println("4. display student");
-        System.out.println("5. display list students");
-        System.out.println("6. Exit");
-        System.out.println("selection: ");
-    }
 }

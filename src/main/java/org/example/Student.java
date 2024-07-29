@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.Scanner;
 
 public class Student {
     private int id;
@@ -12,18 +11,12 @@ public class Student {
     public String toString() {
         return "ID: " + id + ", Name: " + name + ", Age: " + age + ", Gender: " + gender;
     }
-    public void input(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("ID: ");
-        id = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Name: ");
-        name = sc.nextLine();
-        System.out.println("Age: ");
-        age = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Gender: ");
-        gender = sc.nextLine();
+
+    public Student(int id, String name, int age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
     public int getId() {
