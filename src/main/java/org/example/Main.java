@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Scanner;
-
 /**
  * using encapsulation (private, public)
  * using polymorphism (override toString() method)

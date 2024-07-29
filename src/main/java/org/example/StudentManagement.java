@@ -2,13 +2,12 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class StudentManagement {
-    private List<Student> students = new ArrayList<>();
+    private final List<Student> students = new ArrayList<>();
 
-    public boolean add(Student student){
-        if(findById(student.getId()) == null){
+    public boolean add(Student student) {
+        if (findById(student.getId()) == null) {
             students.add(student);
             return true;
         } else {
@@ -21,7 +20,7 @@ public class StudentManagement {
     }
 
     public Student findById(int id) {
-        for (Student student : students){
+        for (Student student : students) {
             if (student.getId() == id) {
                 return student;
             }
@@ -29,7 +28,7 @@ public class StudentManagement {
         return null;
     }
 
-    public boolean deleteById(int id){
+    public boolean deleteById(int id) {
         return students.remove(findById(id));
     }
 }

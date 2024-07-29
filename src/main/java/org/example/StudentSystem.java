@@ -1,14 +1,13 @@
 package org.example;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class StudentSystem {
+
+    private StudentManagement studentManagement = new StudentManagement();
     public void menu(){
 
         Scanner sc = new Scanner(System.in);
-        StudentManagement students = new StudentManagement();
-        StudentSystem studentSystem = new StudentSystem();
         int choice = 0;
         do {
 
@@ -25,24 +24,25 @@ public class StudentSystem {
             switch (choice){
                 case 1:
                     try{
-                        Student student = studentSystem.insert();
-                        studentSystem.add(students, student);
-                    }catch (Exception ignored){
-                        System.out.println("Error input");
+                        Student student = insert();
+//                        System.out.println(student.toString());
+                        add(student);
+                    }catch (Exception e){
+                        e.printStackTrace(System.out);
                     }
                     break;
                 case 2:
                     System.out.println("ID: ");
                     int delStudentId = sc.nextInt();
-                    studentSystem.deleteById(students, delStudentId);
+                    deleteById(delStudentId);
                     break;
                 case 3:
                     System.out.println("ID: ");
                     int findStudentId = sc.nextInt();
-                    studentSystem.displayStudentById(students, findStudentId);
+                    displayStudentById(findStudentId);
                     break;
                 case 4:
-                    studentSystem.displayStudentList(students);
+                    displayStudentList();
                     break;
                 case 5:
                     System.exit(0);
@@ -51,11 +51,11 @@ public class StudentSystem {
                     break;
             }
 
-        }while (choice != 6);
+        }while (choice != 5);
 
     }
 
-    public Student insert() {
+    private Student insert() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ID: ");
         int id = sc.nextInt();
@@ -73,13 +73,13 @@ public class StudentSystem {
         return student;
     }
 
-    public void displayStudentList(StudentManagement studentManagement) {
+    public void displayStudentList() {
         for (Student student : studentManagement.getStudents()){
             System.out.println(student.toString());
         }
     }
 
-    public  void displayStudentById(StudentManagement studentManagement, int id){
+    public void displayStudentById(int id) {
         if (studentManagement.findById(id) == null){
             System.out.println("Not found");
         } else {
@@ -87,7 +87,7 @@ public class StudentSystem {
         }
     }
 
-    public void deleteById(StudentManagement studentManagement, int id){
+    public void deleteById(int id) {
         if (studentManagement.findById(id) == null){
             System.out.println("Not found");
         } else{
@@ -96,9 +96,11 @@ public class StudentSystem {
         }
     }
 
-    public void add(StudentManagement studentManagement, Student student){
+    public void add(Student student) {
         if (!studentManagement.add(student)){
             System.out.println("duplicate ID");
+        } else{
+            System.out.println("Success");
         }
     }
 }
