@@ -1,13 +1,13 @@
 package org.example;
 
 
-public class Student {
-    private int id;
+public class StudentEntity {
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     private String gender;
 
-    public Student(int id, String name, int age, String gender) {
+    public StudentEntity(Integer id, String name, Integer age, String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -19,7 +19,7 @@ public class Student {
         return "ID: " + id + ", Name: " + name + ", Age: " + age + ", Gender: " + gender;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 }

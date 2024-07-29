@@ -3,32 +3,32 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentManagement {
-    private static final List<Student> students = new ArrayList<>();
+public class StudentManagement implements StudentRepository{
+    private static final List<StudentEntity> STUDENT_ENTITIES = new ArrayList<>();
 
-    public boolean add(Student student) {
-        if (findById(student.getId()) == null) {
-            students.add(student);
+    public boolean add(StudentEntity studentEntity) {
+        if (findById(studentEntity.getId()) == null) {
+            STUDENT_ENTITIES.add(studentEntity);
             return true;
         } else {
             return false;
         }
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public List<StudentEntity> getStudents() {
+        return STUDENT_ENTITIES;
     }
 
-    public Student findById(int id) {
-        for (Student student : students) {
-            if (student.getId() == id) {
-                return student;
+    public StudentEntity findById(int id) {
+        for (StudentEntity studentEntity : STUDENT_ENTITIES) {
+            if (studentEntity.getId() == id) {
+                return studentEntity;
             }
         }
         return null;
     }
 
     public boolean deleteById(int id) {
-        return students.remove(findById(id));
+        return STUDENT_ENTITIES.remove(findById(id));
     }
 }

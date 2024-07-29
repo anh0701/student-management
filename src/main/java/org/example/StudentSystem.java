@@ -24,9 +24,9 @@ public class StudentSystem {
             switch (choice){
                 case 1:
                     try{
-                        Student student = createStudentFromStdio();
+                        StudentEntity studentEntity = createStudentFromStdio();
 //                        System.out.println(student.toString());
-                        add(student);
+                        add(studentEntity);
                     }catch (Exception e){
                         e.printStackTrace(System.out);
                     }
@@ -55,7 +55,7 @@ public class StudentSystem {
 
     }
 
-    private Student createStudentFromStdio() {
+    private StudentEntity createStudentFromStdio() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ID: ");
         int id = sc.nextInt();
@@ -68,14 +68,14 @@ public class StudentSystem {
         System.out.println("Gender: ");
         String gender = sc.nextLine();
 
-        Student student = new Student(id, name, age, gender);
-
-        return student;
+        StudentEntity studentEntity = new StudentEntity(id, name, age, gender);
+        
+        return studentEntity;
     }
 
     public void displayStudentList() {
-        for (Student student : studentManagement.getStudents()){
-            System.out.println(student.toString());
+        for (StudentEntity studentEntity : studentManagement.getStudents()){
+            System.out.println(studentEntity.toString());
         }
     }
 
@@ -96,8 +96,8 @@ public class StudentSystem {
         }
     }
 
-    public void add(Student student) {
-        if (!studentManagement.add(student)){
+    public void add(StudentEntity studentEntity) {
+        if (!studentManagement.add(studentEntity)){
             System.out.println("duplicate ID");
         } else{
             System.out.println("Success");

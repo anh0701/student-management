@@ -1,9 +1,9 @@
-# student-management
+# studentEntity-management
 
 ## usage
 
-- add a student
+- add a studentEntity
 - add list students
-- delete a student
-- display a student
+- delete a studentEntity
+- display a studentEntity
 - display list students
