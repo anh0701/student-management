@@ -24,7 +24,7 @@ public class StudentSystem {
             switch (choice){
                 case 1:
                     try{
-                        Student student = insert();
+                        Student student = createStudentFromStdio();
 //                        System.out.println(student.toString());
                         add(student);
                     }catch (Exception e){
@@ -55,7 +55,7 @@ public class StudentSystem {
 
     }
 
-    private Student insert() {
+    private Student createStudentFromStdio() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ID: ");
         int id = sc.nextInt();
