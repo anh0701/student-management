@@ -2,10 +2,10 @@ package org.example;
 
 
 public class Student {
-    private final int id;
-    private final String name;
-    private final int age;
-    private final String gender;
+    private int id;
+    private String name;
+    private int age;
+    private String gender;
 
     public Student(int id, String name, int age, String gender) {
         this.id = id;

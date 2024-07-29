@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagement {
-    private final List<Student> students = new ArrayList<>();
+    private static final List<Student> students = new ArrayList<>();
 
     public boolean add(Student student) {
         if (findById(student.getId()) == null) {
