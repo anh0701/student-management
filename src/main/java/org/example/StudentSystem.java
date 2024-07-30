@@ -74,7 +74,7 @@ public class StudentSystem {
     }
 
     public void displayStudentList() {
-        for (StudentEntity studentEntity : studentRepository.getSTUDENT_ENTITIES().values()){
+        for (StudentEntity studentEntity : studentRepository.getstudentEntities().values()){
             System.out.println(studentEntity.toString());
         }
     }
