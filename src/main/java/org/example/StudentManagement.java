@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentManagement implements StudentRepository{
-    private static final Map<Integer, StudentEntity> STUDENT_ENTITIES = new HashMap<>();
+    private final Map<Integer, StudentEntity> STUDENT_ENTITIES = new HashMap<>();
 
     public boolean add(StudentEntity studentEntity) {
         if (!STUDENT_ENTITIES.containsKey(studentEntity.getId())) {
