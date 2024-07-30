@@ -1,9 +1,12 @@
 package org.example;
 
-import java.util.List;
+import java.util.Map;
 
 public interface StudentRepository {
+
     boolean add(StudentEntity studentEntity);
-    List<StudentEntity> getStudents();
-    boolean deleteById(int id);
+    Map<Integer, StudentEntity> getSTUDENT_ENTITIES();
+    boolean deleteById(Integer studentId);
+
+    StudentEntity findById(Integer studentId);
 }

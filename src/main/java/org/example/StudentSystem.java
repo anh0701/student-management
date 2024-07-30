@@ -33,12 +33,12 @@ public class StudentSystem {
                     break;
                 case 2:
                     System.out.println("ID: ");
-                    int delStudentId = sc.nextInt();
+                    Integer delStudentId = sc.nextInt();
                     deleteById(delStudentId);
                     break;
                 case 3:
                     System.out.println("ID: ");
-                    int findStudentId = sc.nextInt();
+                    Integer findStudentId = sc.nextInt();
                     displayStudentById(findStudentId);
                     break;
                 case 4:
@@ -58,12 +58,12 @@ public class StudentSystem {
     private StudentEntity createStudentFromStdio() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ID: ");
-        int id = sc.nextInt();
+        Integer id = sc.nextInt();
         sc.nextLine();
         System.out.println("Name: ");
         String name = sc.nextLine();
         System.out.println("Age: ");
-        int age = sc.nextInt();
+        Integer age = sc.nextInt();
         sc.nextLine();
         System.out.println("Gender: ");
         String gender = sc.nextLine();
@@ -74,26 +74,25 @@ public class StudentSystem {
     }
 
     public void displayStudentList() {
-        for (StudentEntity studentEntity : studentManagement.getStudents()){
+        for (StudentEntity studentEntity : studentManagement.getSTUDENT_ENTITIES().values()){
             System.out.println(studentEntity.toString());
         }
     }
 
-    public void displayStudentById(int id) {
-        if (studentManagement.findById(id) == null){
+    public void displayStudentById(Integer id) {
+        if (studentManagement.findById(id) != null){
+            System.out.println(studentManagement.findById(id));
+        }else {
             System.out.println("Not found");
-        } else {
-            System.out.println(studentManagement.findById(id).toString());
         }
     }
 
-    public void deleteById(int id) {
-        if (studentManagement.findById(id) == null){
-            System.out.println("Not found");
-        } else{
-            studentManagement.deleteById(id);
-            System.out.println("remove success");
-        }
+    public void deleteById(Integer id) {
+       if (studentManagement.deleteById(id)){
+           System.out.println("remove success");
+       }else {
+           System.out.println("Fail");
+       }
     }
 
     public void add(StudentEntity studentEntity) {

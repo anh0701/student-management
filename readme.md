@@ -1,4 +1,4 @@
-# studentEntity-management
+# student-management
 
 ## usage
 

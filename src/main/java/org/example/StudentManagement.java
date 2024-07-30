@@ -1,34 +1,34 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StudentManagement implements StudentRepository{
-    private static final List<StudentEntity> STUDENT_ENTITIES = new ArrayList<>();
+    private static final Map<Integer, StudentEntity> STUDENT_ENTITIES = new HashMap<>();
 
     public boolean add(StudentEntity studentEntity) {
-        if (findById(studentEntity.getId()) == null) {
-            STUDENT_ENTITIES.add(studentEntity);
+        if (!STUDENT_ENTITIES.containsKey(studentEntity.getId())) {
+            STUDENT_ENTITIES.put(studentEntity.getId(), studentEntity);
             return true;
         } else {
             return false;
         }
     }
 
-    public List<StudentEntity> getStudents() {
+    public Map<Integer, StudentEntity> getSTUDENT_ENTITIES() {
         return STUDENT_ENTITIES;
     }
 
-    public StudentEntity findById(int id) {
-        for (StudentEntity studentEntity : STUDENT_ENTITIES) {
-            if (studentEntity.getId() == id) {
-                return studentEntity;
-            }
-        }
-        return null;
+    public StudentEntity findById(Integer studentId){
+        return STUDENT_ENTITIES.get(studentId);
     }
 
-    public boolean deleteById(int id) {
-        return STUDENT_ENTITIES.remove(findById(id));
+    public boolean deleteById(Integer studentId) {
+        if (STUDENT_ENTITIES.containsKey(studentId)) {
+            STUDENT_ENTITIES.remove(studentId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
