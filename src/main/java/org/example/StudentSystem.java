@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StudentSystem {
 
-    private static final StudentRepository studentRepository= new StudentManagement();
+    private final StudentRepository studentRepository= new StudentManagement();
     public void menu(){
 
         Scanner sc = new Scanner(System.in);
