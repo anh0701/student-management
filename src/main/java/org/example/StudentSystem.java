@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StudentSystem {
 
-    private static final StudentManagement studentManagement = new StudentManagement();
+    private static final StudentRepository studentRepository= new StudentManagement();
     public void menu(){
 
         Scanner sc = new Scanner(System.in);
@@ -74,21 +74,21 @@ public class StudentSystem {
     }
 
     public void displayStudentList() {
-        for (StudentEntity studentEntity : studentManagement.getSTUDENT_ENTITIES().values()){
+        for (StudentEntity studentEntity : studentRepository.getSTUDENT_ENTITIES().values()){
             System.out.println(studentEntity.toString());
         }
     }
 
     public void displayStudentById(Integer id) {
-        if (studentManagement.findById(id) != null){
-            System.out.println(studentManagement.findById(id));
+        if (studentRepository.findById(id) != null){
+            System.out.println(studentRepository.findById(id));
         }else {
             System.out.println("Not found");
         }
     }
 
     public void deleteById(Integer id) {
-       if (studentManagement.deleteById(id)){
+       if (studentRepository.deleteById(id)){
            System.out.println("remove success");
        }else {
            System.out.println("Fail");
@@ -96,7 +96,7 @@ public class StudentSystem {
     }
 
     public void add(StudentEntity studentEntity) {
-        if (!studentManagement.add(studentEntity)){
+        if (!studentRepository.add(studentEntity)){
             System.out.println("duplicate ID");
         } else{
             System.out.println("Success");
