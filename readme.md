@@ -2,8 +2,8 @@
 
 ## usage
 
-- add a studentEntity
+- add a student
 - add list students
-- delete a studentEntity
-- display a studentEntity
+- delete a student
+- display a student
 - display list students

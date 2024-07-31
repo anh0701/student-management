@@ -14,9 +14,10 @@ public class StudentSystem {
             System.out.println("Menu");
             System.out.println("1. add a student");
             System.out.println("2. delete a student");
-            System.out.println("3. display a student");
-            System.out.println("4. display list students");
-            System.out.println("5. Exit");
+            System.out.println("3. update a student");
+            System.out.println("4. display a student");
+            System.out.println("5. display list students");
+            System.out.println("6. Exit");
             System.out.println("selection: ");
 
             choice = sc.nextInt();
@@ -24,9 +25,9 @@ public class StudentSystem {
             switch (choice){
                 case 1:
                     try{
-                        StudentEntity studentEntity = createStudentFromStdio();
+                        Student student = createStudentFromStdio();
 //                        System.out.println(student.toString());
-                        add(studentEntity);
+                        add(student);
                     }catch (Exception e){
                         e.printStackTrace(System.out);
                     }
@@ -37,25 +38,29 @@ public class StudentSystem {
                     deleteById(delStudentId);
                     break;
                 case 3:
+                    Student student = createStudentFromStdio();
+                    update(student);
+                    break;
+                case 4:
                     System.out.println("ID: ");
                     Integer findStudentId = sc.nextInt();
                     displayStudentById(findStudentId);
                     break;
-                case 4:
+                case 5:
                     displayStudentList();
                     break;
-                case 5:
+                case 6:
                     System.exit(0);
                 default:
                     System.out.println("Error");
                     break;
             }
 
-        }while (choice != 5);
+        }while (choice != 6);
 
     }
 
-    private StudentEntity createStudentFromStdio() {
+    private Student createStudentFromStdio() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ID: ");
         Integer id = sc.nextInt();
@@ -68,14 +73,14 @@ public class StudentSystem {
         System.out.println("Gender: ");
         String gender = sc.nextLine();
 
-        StudentEntity studentEntity = new StudentEntity(id, name, age, gender);
+        Student student = new Student(id, name, age, gender);
         
-        return studentEntity;
+        return student;
     }
 
     public void displayStudentList() {
-        for (StudentEntity studentEntity : studentRepository.getstudentEntities().values()){
-            System.out.println(studentEntity.toString());
+        for (Student student : studentRepository.getStudents().values()){
+            System.out.println(student.toString());
         }
     }
 
@@ -95,11 +100,19 @@ public class StudentSystem {
        }
     }
 
-    public void add(StudentEntity studentEntity) {
-        if (!studentRepository.add(studentEntity)){
+    public void add(Student student) {
+        if (!studentRepository.add(student)){
             System.out.println("duplicate ID");
         } else{
             System.out.println("Success");
+        }
+    }
+
+    public void update(Student student){
+        if ((studentRepository.updateById(student))){
+            System.out.println("Success");
+        }else{
+            System.out.println("Error");
         }
     }
 }

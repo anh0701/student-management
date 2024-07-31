@@ -4,9 +4,9 @@ import java.util.Map;
 
 public interface StudentRepository {
 
-    boolean add(StudentEntity studentEntity);
-    Map<Integer, StudentEntity> getstudentEntities();
+    boolean add(Student student);
+    Map<Integer, Student> getStudents();
     boolean deleteById(Integer studentId);
-
-    StudentEntity findById(Integer studentId);
+    Student findById(Integer studentId);
+    boolean updateById(Student student);
 }

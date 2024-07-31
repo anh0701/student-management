@@ -1,34 +1,49 @@
 package org.example;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class StudentManagement implements StudentRepository{
-    private final Map<Integer, StudentEntity> studentEntities = new HashMap<>();
+    private final Map<Integer, Student> students = new HashMap<>();
 
-    public boolean add(StudentEntity studentEntity) {
-        if (!studentEntities.containsKey(studentEntity.getId())) {
-            studentEntities.put(studentEntity.getId(), studentEntity);
+    @Override
+    public boolean add(@NotNull Student student) {
+        if (!students.containsKey(student.getId())) {
+            students.put(student.getId(), student);
             return true;
         } else {
             return false;
         }
     }
 
-    public Map<Integer, StudentEntity> getstudentEntities() {
-        return studentEntities;
+    @Override
+    public Map<Integer, Student> getStudents() {
+        return students;
     }
 
-    public StudentEntity findById(Integer studentId){
-        return studentEntities.get(studentId);
+    @Override
+    public Student findById(Integer studentId){
+        return students.get(studentId);
     }
 
+    @Override
     public boolean deleteById(Integer studentId) {
-        if (studentEntities.containsKey(studentId)) {
-            studentEntities.remove(studentId);
+        if (students.containsKey(studentId)) {
+            students.remove(studentId);
             return true;
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean updateById(Student student) {
+        if (findById(student.getId()) != null){
+            students.put(student.getId(), student);
+            return true;
+        }
+        return false;
     }
 }
