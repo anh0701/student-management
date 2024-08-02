@@ -1,11 +1,22 @@
 package org.example;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class StudentSystem {
 
     private final StudentRepository studentRepository= new StudentManagement();
-    public void menu(){
+    public void menu() throws SQLException {
+        String url = DatabaseConfig.getDbUrl();
+        String username = DatabaseConfig.getDbUsername();
+        String password = DatabaseConfig.getDbPassword();
+
+        Connection connection = DriverManager.getConnection(url, username, password);
+        if (connection != null){
+            System.out.println("Connect db success");
+        }
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
