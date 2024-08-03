@@ -2,10 +2,12 @@ package org.example;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseConfig {
     private static final Properties properties = new Properties();
+    private Connection connection;
 
     static {
         try (InputStream input = DatabaseConfig.class.getClassLoader().getResourceAsStream("db.properties")) {
@@ -18,6 +20,36 @@ public class DatabaseConfig {
             e.printStackTrace();
         }
     }
+
+    public boolean connected() {
+        String url = DatabaseConfig.getDbUrl();
+        String username = DatabaseConfig.getDbUsername();
+        String password = DatabaseConfig.getDbPassword();
+        try{
+            connection = DriverManager.getConnection(url, username, password);
+            return  true;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+//    public ResultSet execQuery(String query) throws SQLException {
+//        return this.connection.createStatement().executeQuery(query);
+//    }
+//
+//    public ResultSet queryWithParameter(String query, Object... params) throws SQLException {
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//            for (int i = 0; i < params.length; i++) {
+//                preparedStatement.setObject(i + 1, params[i]);
+//            }
+//            return preparedStatement.executeQuery();
+//    }
+
 
     public static String getDbUrl() {
         return properties.getProperty("db.url");

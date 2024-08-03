@@ -1,7 +1,5 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -9,14 +7,6 @@ public class StudentSystem {
 
     private final StudentRepository studentRepository= new StudentManagement();
     public void menu() throws SQLException {
-        String url = DatabaseConfig.getDbUrl();
-        String username = DatabaseConfig.getDbUsername();
-        String password = DatabaseConfig.getDbPassword();
-
-        Connection connection = DriverManager.getConnection(url, username, password);
-        if (connection != null){
-            System.out.println("Connect db success");
-        }
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
@@ -36,7 +26,7 @@ public class StudentSystem {
             switch (choice){
                 case 1:
                     try{
-                        Student student = createStudentFromStdio();
+                        Student student = createStudentNullId();
 //                        System.out.println(student.toString());
                         add(student);
                     }catch (Exception e){
@@ -81,7 +71,7 @@ public class StudentSystem {
         System.out.println("Age: ");
         Integer age = sc.nextInt();
         sc.nextLine();
-        System.out.println("Gender: ");
+        System.out.println("Gender (nu, nam): ");
         String gender = sc.nextLine();
 
         Student student = new Student(id, name, age, gender);
@@ -89,13 +79,28 @@ public class StudentSystem {
         return student;
     }
 
-    public void displayStudentList() {
-        for (Student student : studentRepository.getStudents().values()){
+    private Student createStudentNullId() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Name: ");
+        String name = sc.nextLine();
+        System.out.println("Age: ");
+        Integer age = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Gender (nu, nam): ");
+        String gender = sc.nextLine();
+
+        Student student = new Student(0, name, age, gender);
+
+        return student;
+    }
+
+    public void displayStudentList() throws SQLException {
+        for (Student student : studentRepository.getStudents()){
             System.out.println(student.toString());
         }
     }
 
-    public void displayStudentById(Integer id) {
+    public void displayStudentById(Integer id) throws SQLException {
         if (studentRepository.findById(id) != null){
             System.out.println(studentRepository.findById(id));
         }else {
@@ -103,7 +108,7 @@ public class StudentSystem {
         }
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(Integer id) throws SQLException {
        if (studentRepository.deleteById(id)){
            System.out.println("remove success");
        }else {
@@ -113,13 +118,13 @@ public class StudentSystem {
 
     public void add(Student student) {
         if (!studentRepository.add(student)){
-            System.out.println("duplicate ID");
+            System.out.println("Error");
         } else{
             System.out.println("Success");
         }
     }
 
-    public void update(Student student){
+    public void update(Student student) throws SQLException {
         if ((studentRepository.updateById(student))){
             System.out.println("Success");
         }else{
