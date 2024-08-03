@@ -8,6 +8,6 @@ CREATE TABLE public.student (
     id SERIAL NOT NULL,
     "name" varchar NULL,
     age int4 NULL,
-    gender bit(1) NULL,
+    gender boolean NULL,
     CONSTRAINT student_pkey PRIMARY KEY (id)
 );

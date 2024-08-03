@@ -13,9 +13,9 @@ public class StudentManagement implements StudentRepository{
     private DatabaseConfig databaseConfig = new DatabaseConfig();
     private static final String SELECT = "select * from student";
     private static final String SELECT_BY_ID = "select * from student where id = ?";
-    private  static  final String UPDATE = "update student set name = ?, age = ?, gender = ? ::bit where id = ?";
+    private  static  final String UPDATE = "update student set name = ?, age = ?, gender = ? where id = ?";
     private  static final String DELETE = "delete from student where id = ?";
-    private static final String INSERT = "insert into student (name, age, gender) values (?,?,? ::bit)";
+    private static final String INSERT = "insert into student (name, age, gender) values (?,?,?)";
 
     public StudentManagement() {
         databaseConfig.connected();
@@ -24,11 +24,11 @@ public class StudentManagement implements StudentRepository{
     @Override
     public boolean add(Student student) {
         try{
-            int gender = student.getGender().equals("nu") ? 1: 0;
+            boolean gender = student.getGender().equals("nu");
             PreparedStatement stmt = databaseConfig.getConnection().prepareStatement(INSERT);
             stmt.setString(1, student.getName());
             stmt.setInt(2, student.getAge());
-            stmt.setInt(3, gender);
+            stmt.setBoolean(3, gender);
             stmt.execute();
 //            databaseConfig.queryWithParameter(INSERT, student.getName(), student.getAge(), gender);
             return true;
@@ -46,7 +46,7 @@ public class StudentManagement implements StudentRepository{
         while(rs.next()) {
             int id = rs.getInt(1);
             String name = rs.getString(2);
-            String gender = rs.getInt(4) == 1 ? "nu" : "nam";
+            String gender = rs.getBoolean(4) ? "nu" : "nam";
             int age = rs.getInt(3);
 
             Student student = new Student(id, name, age, gender);
@@ -63,7 +63,7 @@ public class StudentManagement implements StudentRepository{
         while(rs.next()) {
             int id = rs.getInt(1);
             String name = rs.getString(2);
-            String gender = rs.getInt(4) == 1 ? "nu" : "nam";
+            String gender = rs.getBoolean(4) ? "nu" : "nam";
             int age = rs.getInt(3);
 
             Student student = new Student(id, name, age, gender);
@@ -87,12 +87,12 @@ public class StudentManagement implements StudentRepository{
     @Override
     public boolean updateById(Student student) throws SQLException {
         if (findById(student.getId()) != null){
-            int gender = student.getGender().equals("nu") ? 1 : 0;
+            boolean gender = student.getGender().equals("nu");
 //            databaseConfig.queryWithParameter(UPDATE, student.getName(), student.getAge(), student.getGender(), student.getId());
             PreparedStatement stmt = databaseConfig.getConnection().prepareStatement(UPDATE);
             stmt.setString(1, student.getName());
             stmt.setInt(2, student.getAge());
-            stmt.setInt(3, gender);
+            stmt.setBoolean(3, gender);
             stmt.setInt(4, student.getId());
             stmt.execute();
             return true;
