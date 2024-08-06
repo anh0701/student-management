@@ -52,14 +52,14 @@ public class DatabaseConfig {
 
 
     public static String getDbUrl() {
-        return properties.getProperty("db.url");
+        return properties.getProperty("url");
     }
 
     public static String getDbUsername() {
-        return properties.getProperty("db.username");
+        return properties.getProperty("username");
     }
 
     public static String getDbPassword() {
-        return properties.getProperty("db.password");
+        return properties.getProperty("password");
     }
 }

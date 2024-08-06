@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 public class StudentSystem {
 
-    private final StudentRepository studentRepository= new StudentManagement();
+    private final StudentRepository studentRepository;
+
+    public StudentSystem() {
+         studentRepository= new StudentManagement();
+    }
+
     public void menu() throws SQLException {
 
         Scanner sc = new Scanner(System.in);
