@@ -5,12 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class StudentManagement implements StudentRepository{
-    private DatabaseConfig databaseConfig = new DatabaseConfig();
+    private DataSource dataSource ;
     private static final String SELECT = "select * from student";
     private static final String SELECT_BY_ID = "select * from student where id = ?";
     private  static  final String UPDATE = "update student set name = ?, age = ?, gender = ? where id = ?";
@@ -18,14 +16,14 @@ public class StudentManagement implements StudentRepository{
     private static final String INSERT = "insert into student (name, age, gender) values (?,?,?)";
 
     public StudentManagement() {
-        databaseConfig.connected();
+        dataSource = new DataSource();
     }
 
     @Override
     public boolean add(Student student) {
         try{
             boolean gender = student.getGender().equals("nu");
-            PreparedStatement stmt = databaseConfig.getConnection().prepareStatement(INSERT);
+            PreparedStatement stmt = dataSource.getConnection().prepareStatement(INSERT);
             stmt.setString(1, student.getName());
             stmt.setInt(2, student.getAge());
             stmt.setBoolean(3, gender);
@@ -40,7 +38,7 @@ public class StudentManagement implements StudentRepository{
 
     @Override
     public List<Student> getStudents() throws SQLException {
-        Statement st = databaseConfig.getConnection().createStatement();
+        Statement st = dataSource.getConnection().createStatement();
         ResultSet rs = st.executeQuery(SELECT);
         List<Student> students = new ArrayList<>();
         while(rs.next()) {
@@ -57,7 +55,7 @@ public class StudentManagement implements StudentRepository{
 
     @Override
     public Student findById(Integer studentId) throws SQLException {
-        PreparedStatement stmt= databaseConfig.getConnection().prepareStatement(SELECT_BY_ID);
+        PreparedStatement stmt= dataSource.getConnection().prepareStatement(SELECT_BY_ID);
         stmt.setInt(1, studentId);
         ResultSet rs = stmt.executeQuery();
         while(rs.next()) {
@@ -75,7 +73,7 @@ public class StudentManagement implements StudentRepository{
     @Override
     public boolean deleteById(Integer studentId) throws SQLException {
         if (findById(studentId) != null) {
-            PreparedStatement stmt = databaseConfig.getConnection().prepareStatement(DELETE);
+            PreparedStatement stmt = dataSource.getConnection().prepareStatement(DELETE);
             stmt.setInt(1, studentId);
             stmt.execute();
             return true;
@@ -89,7 +87,7 @@ public class StudentManagement implements StudentRepository{
         if (findById(student.getId()) != null){
             boolean gender = student.getGender().equals("nu");
 //            databaseConfig.queryWithParameter(UPDATE, student.getName(), student.getAge(), student.getGender(), student.getId());
-            PreparedStatement stmt = databaseConfig.getConnection().prepareStatement(UPDATE);
+            PreparedStatement stmt = dataSource.getConnection().prepareStatement(UPDATE);
             stmt.setString(1, student.getName());
             stmt.setInt(2, student.getAge());
             stmt.setBoolean(3, gender);
