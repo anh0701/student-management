@@ -35,6 +35,7 @@ public class StudentManagement implements StudentRepository{
             logger.info("insert success");
             return true;
         } catch (SQLException e){
+            logger.info(e.toString());
             e.printStackTrace();
             return false;
         }
@@ -80,8 +81,10 @@ public class StudentManagement implements StudentRepository{
             PreparedStatement stmt = dataSource.getConnection().prepareStatement(DELETE);
             stmt.setInt(1, studentId);
             stmt.execute();
+            logger.info("delete success student id = " + studentId);
             return true;
         } else {
+            logger.info("delete failed student id = " + studentId);
             return false;
         }
     }
@@ -97,6 +100,7 @@ public class StudentManagement implements StudentRepository{
             stmt.setBoolean(3, gender);
             stmt.setInt(4, student.getId());
             stmt.execute();
+            logger.info("update succes student id = " + student);
             return true;
         }
         return false;
