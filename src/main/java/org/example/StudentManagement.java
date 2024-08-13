@@ -1,5 +1,8 @@
 package org.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +12,7 @@ import java.util.List;
 
 public class StudentManagement implements StudentRepository{
     private DataSource dataSource ;
+    private static final Logger logger = LoggerFactory.getLogger(StudentManagement.class);
     private static final String SELECT = "select * from student";
     private static final String SELECT_BY_ID = "select * from student where id = ?";
     private  static  final String UPDATE = "update student set name = ?, age = ?, gender = ? where id = ?";
@@ -28,7 +32,7 @@ public class StudentManagement implements StudentRepository{
             stmt.setInt(2, student.getAge());
             stmt.setBoolean(3, gender);
             stmt.execute();
-//            databaseConfig.queryWithParameter(INSERT, student.getName(), student.getAge(), gender);
+            logger.info("insert success");
             return true;
         } catch (SQLException e){
             e.printStackTrace();
