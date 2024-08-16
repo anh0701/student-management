@@ -75,3 +75,11 @@
 [INFO ] 2024-08-16 09:55:30.476 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28b46423
 [INFO ] 2024-08-16 09:55:30.478 [main] HikariDataSource - HikariPool-1 - Start completed.
 [INFO ] 2024-08-16 09:55:43.708 [main] StudentManagement - update succes student id = ID: 1, Name: hoa, Age: 66, Gender: nu
+[INFO ] 2024-08-16 10:59:56.181 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 10:59:56.436 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-16 10:59:56.439 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 11:03:24.596 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 11:03:24.826 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-16 11:03:24.827 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 11:03:32.626 [main] StudentManagement - insert success
+[INFO ] 2024-08-16 11:04:18.949 [main] StudentManagement - delete success student id = 19

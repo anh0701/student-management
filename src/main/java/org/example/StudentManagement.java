@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagement implements StudentRepository{
-    private static StudentManagement instance;
     private DataSource dataSource ;
     private static final Logger logger = LoggerFactory.getLogger(StudentManagement.class);
     private static final String SELECT = "select * from student";
@@ -17,20 +16,10 @@ public class StudentManagement implements StudentRepository{
     private  static final String DELETE = "delete from student where id = ?";
     private static final String INSERT = "insert into student (name, age, gender) values (?,?,?)";
 
-    private StudentManagement() {
-        dataSource = new DataSource();
+    public StudentManagement() {
+        dataSource = DataSource.getInstance();
     }
 
-    public static StudentManagement getInstance() {
-        if (instance == null) {
-            synchronized (StudentManagement.class) {
-                if (instance == null) {
-                    instance = new StudentManagement();
-                }
-            }
-        }
-        return instance;
-    }
 
     @Override
     public boolean add(Student student) {

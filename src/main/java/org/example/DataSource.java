@@ -9,10 +9,11 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DataSource {
+    private static DataSource instance;
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource dataSource;
 
-    static {
+    private DataSource(){
         try (InputStream input = DataSource.class.getClassLoader().getResourceAsStream("db.properties")) {
             Properties properties = new Properties();
             properties.load(input);
@@ -26,6 +27,13 @@ public class DataSource {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static DataSource getInstance() {
+        if (instance == null){
+            instance = new DataSource();
+        }
+        return instance;
     }
 
     public Connection getConnection() throws SQLException{
