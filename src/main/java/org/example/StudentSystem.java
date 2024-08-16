@@ -8,7 +8,7 @@ public class StudentSystem {
     private final StudentRepository studentRepository;
 
     public StudentSystem() {
-         studentRepository= new StudentManagement();
+         studentRepository = StudentManagement.getInstance();
     }
 
     public void menu() throws SQLException {
