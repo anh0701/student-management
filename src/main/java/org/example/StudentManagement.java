@@ -3,10 +3,7 @@ package org.example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,19 +35,28 @@ public class StudentManagement implements StudentRepository{
     @Override
     public boolean add(Student student) {
         try{
+            Connection conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
             boolean gender = student.getGender().equals("nu");
-            PreparedStatement stmt = dataSource.getConnection().prepareStatement(INSERT);
-            stmt.setString(1, student.getName());
-            stmt.setInt(2, student.getAge());
-            stmt.setBoolean(3, gender);
-            stmt.execute();
-            logger.info("insert success");
-            return true;
+            try (PreparedStatement stmt = conn.prepareStatement(INSERT)) {
+                stmt.setString(1, student.getName());
+                stmt.setInt(2, student.getAge());
+                stmt.setBoolean(3, gender);
+                stmt.executeUpdate();
+                conn.commit();
+                logger.info("insert success");
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                logger.info(e.toString());
+                e.printStackTrace();
+            }
+
         } catch (SQLException e){
             logger.info(e.toString());
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -90,31 +96,48 @@ public class StudentManagement implements StudentRepository{
     @Override
     public boolean deleteById(Integer studentId) throws SQLException {
         if (findById(studentId) != null) {
-            PreparedStatement stmt = dataSource.getConnection().prepareStatement(DELETE);
-            stmt.setInt(1, studentId);
-            stmt.execute();
-            logger.info("delete success student id = " + studentId);
-            return true;
+            Connection conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement(DELETE)) {
+                stmt.setInt(1, studentId);
+                stmt.executeUpdate();
+                conn.commit();
+                logger.info("delete success student id = " + studentId);
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                logger.info(e.toString());
+                e.printStackTrace();
+            }
         } else {
-            logger.info("delete failed student id = " + studentId);
-            return false;
+            logger.info("Not found student id = " + studentId);
         }
+        return false;
     }
 
     @Override
     public boolean updateById(Student student) throws SQLException {
         if (findById(student.getId()) != null){
             boolean gender = student.getGender().equals("nu");
-//            databaseConfig.queryWithParameter(UPDATE, student.getName(), student.getAge(), student.getGender(), student.getId());
-            PreparedStatement stmt = dataSource.getConnection().prepareStatement(UPDATE);
-            stmt.setString(1, student.getName());
-            stmt.setInt(2, student.getAge());
-            stmt.setBoolean(3, gender);
-            stmt.setInt(4, student.getId());
-            stmt.execute();
-            logger.info("update succes student id = " + student);
-            return true;
+            Connection conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement(UPDATE)) {
+                stmt.setString(1, student.getName());
+                stmt.setInt(2, student.getAge());
+                stmt.setBoolean(3, gender);
+                stmt.setInt(4, student.getId());
+                stmt.executeUpdate();
+                conn.commit();
+                logger.info("update succes student id = " + student);
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                e.printStackTrace();
+                logger.info(e.toString());
+            }
+
         }
+        logger.info("Not found student id = %d", student.getId());
         return false;
     }
 }

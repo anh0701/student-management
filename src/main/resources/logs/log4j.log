@@ -5,3 +5,73 @@
 [INFO ] 2024-08-16 05:09:00.201 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5a37d3ed
 [INFO ] 2024-08-16 05:09:00.203 [main] HikariDataSource - HikariPool-1 - Start completed.
 [INFO ] 2024-08-16 05:09:12.712 [main] StudentManagement - delete success student id = 10
+[INFO ] 2024-08-16 08:30:43.171 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 08:30:43.557 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-16 08:30:43.559 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 08:31:35.190 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 08:35:50.977 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 08:35:51.376 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d9caaeb
+[INFO ] 2024-08-16 08:35:51.379 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 08:35:57.594 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 08:45:43.920 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 08:45:44.230 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1787bc24
+[INFO ] 2024-08-16 08:45:44.235 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:20:45.034 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:20:45.324 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28b46423
+[INFO ] 2024-08-16 09:20:45.327 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:20:56.615 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:21:36.172 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:21:36.521 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43599640
+[INFO ] 2024-08-16 09:21:36.525 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:21:44.416 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:22:17.505 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:22:17.948 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43599640
+[INFO ] 2024-08-16 09:22:17.953 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:23:04.625 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:23:04.949 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d9caaeb
+[INFO ] 2024-08-16 09:23:04.952 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:23:11.810 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:23:41.326 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:23:41.668 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43599640
+[INFO ] 2024-08-16 09:23:41.672 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:36:05.039 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:36:05.307 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d9caaeb
+[INFO ] 2024-08-16 09:36:05.309 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:36:11.831 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:36:53.051 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:36:53.319 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1787bc24
+[INFO ] 2024-08-16 09:36:53.321 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:37:02.129 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:42:42.492 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:42:42.744 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1787bc24
+[INFO ] 2024-08-16 09:42:42.747 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:42:50.945 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:43:12.820 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:43:13.071 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43599640
+[INFO ] 2024-08-16 09:43:13.073 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:43:18.428 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:45:00.762 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:45:01.003 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28b46423
+[INFO ] 2024-08-16 09:45:01.005 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:45:06.160 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:45:41.986 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:45:42.262 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-16 09:45:42.264 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:45:47.436 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:48:53.141 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:48:53.390 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1787bc24
+[INFO ] 2024-08-16 09:48:53.394 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:48:59.288 [main] StudentManagement - org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
+[INFO ] 2024-08-16 09:50:30.146 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:50:30.379 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d9caaeb
+[INFO ] 2024-08-16 09:50:30.381 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:50:36.440 [main] StudentManagement - insert success
+[INFO ] 2024-08-16 09:53:47.174 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:53:47.409 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-16 09:53:47.411 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:53:51.649 [main] StudentManagement - delete success student id = 3
+[INFO ] 2024-08-16 09:54:05.167 [main] StudentManagement - delete success student id = 4
+[INFO ] 2024-08-16 09:55:30.242 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-16 09:55:30.476 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28b46423
+[INFO ] 2024-08-16 09:55:30.478 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-16 09:55:43.708 [main] StudentManagement - update succes student id = ID: 1, Name: hoa, Age: 66, Gender: nu
