@@ -83,3 +83,8 @@
 [INFO ] 2024-08-16 11:03:24.827 [main] HikariDataSource - HikariPool-1 - Start completed.
 [INFO ] 2024-08-16 11:03:32.626 [main] StudentManagement - insert success
 [INFO ] 2024-08-16 11:04:18.949 [main] StudentManagement - delete success student id = 19
+[INFO ] 2024-08-26 08:51:47.750 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-26 08:52:32.829 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2024-08-26 08:52:33.195 [main] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f14a7d4
+[INFO ] 2024-08-26 08:52:33.199 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2024-08-26 08:52:52.802 [main] StudentManagement - delete success student id = 28
